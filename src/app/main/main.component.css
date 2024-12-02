@@ -2,7 +2,6 @@ main {
     flex: 1;
   }
   
-  /* Hero Section */
   .hero {
     background: url('../../../public/wp14317419.jpg') no-repeat center center/cover;
     color: #fff;
@@ -35,7 +34,6 @@ main {
     background: #d35400;
   }
   
-  /* Features Section */
   .features {
     background: #f4f4f4;
     padding: 3rem 0;

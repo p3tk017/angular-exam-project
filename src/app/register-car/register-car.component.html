@@ -1,0 +1,65 @@
+<main>
+    <section class="register-section">
+      <div class="container">
+        <h1>Register Car</h1>
+        <form class="register-form">
+          <!-- Car Details -->
+          <div class="form-group">
+            <label for="car-number">Car Number</label>
+            <input type="number" id="car-number" name="car-number" placeholder="Enter car number" required>
+          </div>
+
+          <div class="form-group">
+            <label for="manufacturer">Manufacturer</label>
+            <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter manufacturer" required>
+          </div>
+
+          <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" id="model" name="model" placeholder="Enter car model" required>
+          </div>
+
+          <div class="form-group">
+            <label for="car-photo-url">Car Photo URL</label>
+            <input type="url" id="car-photo-url" name="car-photo-url" placeholder="Paste car photo URL" required>
+          </div>
+
+          <!-- Driver 1 -->
+          <fieldset class="driver-section">
+            <legend>Driver 1</legend>
+            <div class="form-group">
+              <label for="driver1-name">Name</label>
+              <input type="text" id="driver1-name" name="driver1-name" placeholder="Enter driver's name" required>
+            </div>
+            <div class="form-group">
+              <label for="driver1-age">Age</label>
+              <input type="number" id="driver1-age" name="driver1-age" placeholder="Enter driver's age" required>
+            </div>
+            <div class="form-group">
+              <label for="driver1-nationality">Nationality</label>
+              <input type="text" id="driver1-nationality" name="driver1-nationality" placeholder="Enter driver's nationality" required>
+            </div>
+          </fieldset>
+
+          <!-- Driver 2 -->
+          <fieldset class="driver-section">
+            <legend>Driver 2</legend>
+            <div class="form-group">
+              <label for="driver2-name">Name</label>
+              <input type="text" id="driver2-name" name="driver2-name" placeholder="Enter driver's name" required>
+            </div>
+            <div class="form-group">
+              <label for="driver2-age">Age</label>
+              <input type="number" id="driver2-age" name="driver2-age" placeholder="Enter driver's age" required>
+            </div>
+            <div class="form-group">
+              <label for="driver2-nationality">Nationality</label>
+              <input type="text" id="driver2-nationality" name="driver2-nationality" placeholder="Enter driver's nationality" required>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn">Register Car</button>
+        </form>
+      </div>
+    </section>
+  </main>
