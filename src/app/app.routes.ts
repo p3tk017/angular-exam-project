@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { RegisterCarComponent } from './register-car/register-car.component';
+import { EntryListComponent } from './entry-list/entry-list.component';
 
 export const routes: Routes = [
     {path: "", component: MainComponent},
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path: "register", component: RegisterComponent},
     {path: "login", component: LoginComponent},
     {path: "schedule", component: ScheduleComponent},
-    {path: "registerCar", component: RegisterCarComponent}
+    {path: "registerCar", component: RegisterCarComponent},
+    {path: "entries", component: EntryListComponent}
 ];
