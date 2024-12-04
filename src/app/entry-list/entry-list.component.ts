@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
+import { Car } from '../types/cars';
 
 @Component({
   selector: 'app-entry-list',
@@ -9,11 +10,15 @@ import { ApiServiceService } from '../api-service.service';
   styleUrl: './entry-list.component.css'
 })
 export class EntryListComponent implements OnInit {
+  cars: Car[] = [];
+
   constructor(private apiService: ApiServiceService) {}
 
   ngOnInit(): void {
-    this.apiService.getEnries().subscribe(e => {
-      console.log(e);
+    this.apiService.getEnries().subscribe(cars => {
+      console.log(cars);
+
+      this.cars = cars
     })
   }
 }

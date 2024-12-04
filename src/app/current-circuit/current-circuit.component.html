@@ -1,0 +1,22 @@
+<main>
+    <section class="circuit-detail-section">
+      <div class="container">
+        <h1>{{circuit.name}}</h1>
+        <div class="circuit-detail-content">
+          <!-- Circuit Image -->
+          <div class="circuit-image">
+            <img src="{{circuit.imageUrl}}" alt="{{circuit.name}}">
+          </div>
+          <!-- Circuit Info -->
+          <div class="circuit-info">
+            <p><strong>Location:</strong> {{circuit.location}}</p>
+            <p><strong>Track Length:</strong> {{circuit.length}}</p>
+            <p><strong>Date:</strong> {{circuit.raceDate}}</p>
+            <p>
+              <strong>Description:</strong> {{circuit.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

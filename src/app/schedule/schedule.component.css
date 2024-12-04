@@ -1,7 +1,7 @@
 .schedule-section {
     background: #f4f4f4;
     padding: 3rem 15px;
-    flex: 1; /* Push footer to the bottom */
+    flex: 1; 
   }
   
   .schedule-section .container {

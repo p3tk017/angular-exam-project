@@ -1,0 +1,63 @@
+.circuit-detail-section {
+    padding: 3rem 15px;
+    background: #f4f4f4;
+    flex: 1;
+  }
+  
+  .circuit-detail-section h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #111;
+  }
+  
+  .circuit-detail-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .circuit-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .circuit-info {
+    flex: 1;
+  }
+  
+  .circuit-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #111;
+  }
+  
+  .circuit-info p {
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  
+  .circuit-info p strong {
+    color: #111;
+  }
+  
+  .additional-info {
+    text-align: center;
+  }
+  
+  .additional-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .additional-info .track-map {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  

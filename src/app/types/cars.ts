@@ -6,5 +6,6 @@ export interface Car {
     model: string,
     driver1: Driver,
     driver2: Driver,
+    imageUrl: string,
     owner: string
 }

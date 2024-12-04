@@ -12,6 +12,7 @@ const carSchema = new mongoose.Schema({
   model: { type: String, required: true },
   driver1: { type: driverSchema, required: true },
   driver2: { type: driverSchema, required: true }, 
+  imageUrl: { type: String, required: true },
   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
