@@ -4,7 +4,7 @@
         <h1>Car Entry List</h1>
         <div class="card-grid">
         @for (car of cars; track $index) {
-          <div class="card">
+          <div class="card" [routerLink]="car._id">
             <img src="{{car.imageUrl}}" alt="Car Photo">
             <div class="card-content">
               <h2>Car #{{car.number}}</h2>

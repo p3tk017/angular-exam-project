@@ -1,6 +1,7 @@
 import { Driver } from "./drivers";
 
 export interface Car {
+    _id: string,
     number: number,
     manufacturer: string,
     model: string,

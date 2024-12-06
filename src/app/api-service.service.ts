@@ -16,13 +16,18 @@ export class ApiServiceService {
     return this.http.get<Car[]>(`${apiUrl}/cars`);
   }
 
+  getEntry(id:string) {
+    const { apiUrl } = environment;
+    return this.http.get<Car>(`${apiUrl}/cars/${id}`);
+  }
+
   getCircuits() {
-    const { apiUrl} = environment;
+    const { apiUrl } = environment;
     return this.http.get<Circuit[]>(`${apiUrl}/circuits`);
   }
 
   getSingleCircuit(id:string) {
-    const { apiUrl} = environment;
+    const { apiUrl } = environment;
     return this.http.get<Circuit>(`${apiUrl}/circuits/${id}`);
   }
 }

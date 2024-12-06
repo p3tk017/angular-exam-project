@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { Car } from '../types/cars';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-entry-list',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './entry-list.component.html',
   styleUrl: './entry-list.component.css'
 })
