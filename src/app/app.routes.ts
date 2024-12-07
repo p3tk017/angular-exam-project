@@ -8,6 +8,7 @@ import { RegisterCarComponent } from './register-car/register-car.component';
 import { EntryListComponent } from './entry-list/entry-list.component';
 import { CurrentCircuitComponent } from './current-circuit/current-circuit.component';
 import { CurrentEntryComponent } from './current-entry/current-entry.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path: "", component: MainComponent},
@@ -16,11 +17,11 @@ export const routes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "schedule", children: [
         {path: "", component: ScheduleComponent},
-        {path: ":circuitId", component: CurrentCircuitComponent}
+        {path: ":circuitId", component: CurrentCircuitComponent, canActivate: [AuthGuard]}
     ]},
     {path: "registerCar", component: RegisterCarComponent},
     {path: "entries", children: [
         {path: "", component: EntryListComponent},
-        {path: ":carId", component: CurrentEntryComponent}
+        {path: ":carId", component: CurrentEntryComponent, canActivate: [AuthGuard]}
     ]}
 ];

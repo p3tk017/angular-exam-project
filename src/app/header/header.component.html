@@ -1,15 +1,24 @@
 <header class="site-header">
     <div class="container">
+      @if (!isLoggedIn) {
       <div class="logo">EnduroTrack Championship</div>
+      }
+      @else {
+      <div class="logo">{{name}}</div>
+      }
       <nav class="main-nav">
         <ul>
           <li><a routerLink="/">Home</a></li>
           <li><a routerLink="/schedule">Schedule</a></li>
           <li><a routerLink="/entries">Entries</a></li>
+          @if(!isLoggedIn) {
           <li><a routerLink="/register">Register</a></li>
           <li><a routerLink="/login">Login</a></li>
-          <li><a routerLink="/logout">Logout</a></li>
+          }
+          @else {
           <li><a routerLink="/registerCar">Register your car</a></li>
+          <li><a (click)="logout()">Logout</a></li>
+          }
         </ul>
       </nav>
     </div>
