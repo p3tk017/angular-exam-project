@@ -64,6 +64,13 @@
   .btn:hover {
     background: #d35400;
   }
+
+  .error-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #f39c12;
+  }
   
   .register-link {
     text-align: center;
