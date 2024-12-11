@@ -25,10 +25,23 @@
     flex-direction: column;
     gap: 1.5rem;
   }
+
+  .error-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #f39c12;
+  }
   
   .form-group {
     display: flex;
     flex-direction: column;
+  }
+
+  .passGroup .form-group{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
   }
   
   .form-group label {
