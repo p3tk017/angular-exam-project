@@ -2,26 +2,64 @@
     <section class="register-section">
       <div class="container">
         <h1>Register Car</h1>
-        <form class="register-form">
+        <form class="register-form" #form="ngForm" (ngSubmit)="registerCar(form)">
           <!-- Car Details -->
           <div class="form-group">
             <label for="car-number">Car Number</label>
-            <input type="number" id="car-number" name="car-number" placeholder="Enter car number" required>
+            <input type="number" id="car-number" name="car-number" placeholder="Enter car number" required ngModel #inputCarNumber="ngModel" maxlength="2">
+
+            @if(inputCarNumber?.touched) {
+              <div>
+                @if(inputCarNumber?.errors?.['required']){
+                  <p class="error-message">Number is required!</p>
+                }
+
+                @if(inputCarNumber?.errors?.['maxlength']){
+                  <p class="error-message">Number should be less than 3 characters!</p>
+                }
+              </div>
+            }
           </div>
 
           <div class="form-group">
             <label for="manufacturer">Manufacturer</label>
-            <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter manufacturer" required>
+            <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter manufacturer" required ngModel #inputManufacturer="ngModel" minlength="3">
+
+            @if(inputManufacturer?.touched) {
+              <div>
+                @if(inputManufacturer?.errors?.['required']){
+                  <p class="error-message">Manufacturer name is required!</p>
+                }
+
+                @if(inputManufacturer?.errors?.['minlength']){
+                  <p class="error-message">Manufacturer name should be atleast 3 characters!</p>
+                }
+              </div>
+            }
           </div>
 
           <div class="form-group">
             <label for="model">Model</label>
-            <input type="text" id="model" name="model" placeholder="Enter car model" required>
+            <input type="text" id="model" name="model" placeholder="Enter car model" required ngModel #inputModel="ngModel">
+            @if(inputModel?.touched) {
+              <div>
+                @if(inputModel?.errors?.['required']){
+                  <p class="error-message">Model name is required!</p>
+                }
+              </div>
+            }
           </div>
 
           <div class="form-group">
             <label for="car-photo-url">Car Photo URL</label>
-            <input type="url" id="car-photo-url" name="car-photo-url" placeholder="Paste car photo URL" required>
+            <input type="url" id="car-photo-url" name="car-photo-url" placeholder="Paste car photo URL" required ngModel #inputImageUrl="ngModel">
+            @if(inputImageUrl?.touched) {
+              <div>
+                @if(inputImageUrl?.errors?.['required']){
+                  <p class="error-message">Image URL is required!</p>
+                }
+              </div>
+            }
           </div>
 
           <!-- Driver 1 -->
@@ -29,15 +67,44 @@
             <legend>Driver 1</legend>
             <div class="form-group">
               <label for="driver1-name">Name</label>
-              <input type="text" id="driver1-name" name="driver1-name" placeholder="Enter driver's name" required>
+              <input type="text" id="driver1-name" name="driver1-name" placeholder="Enter driver's name" required ngModel #inputName1="ngModel">
+              @if(inputName1?.touched) {
+                <div>
+                  @if(inputName1?.errors?.['required']){
+                    <p class="error-message">Name is required!</p>
+                  }
+                </div>
+              }
             </div>
             <div class="form-group">
               <label for="driver1-age">Age</label>
-              <input type="number" id="driver1-age" name="driver1-age" placeholder="Enter driver's age" required>
+              <input type="number" id="driver1-age" name="driver1-age" placeholder="Enter driver's age" required ngModel #inputAge1="ngModel" maxlength="2">
+              @if(inputAge1?.touched) {
+                <div>
+                  @if(inputAge1?.errors?.['required']){
+                    <p class="error-message">Age is required!</p>
+                  }
+  
+                  @if(inputAge1?.errors?.['maxlength']){
+                    <p class="error-message">Age number be less than 3 characters!</p>
+                  }
+                </div>
+              }
             </div>
             <div class="form-group">
               <label for="driver1-nationality">Nationality</label>
-              <input type="text" id="driver1-nationality" name="driver1-nationality" placeholder="Enter driver's nationality" required>
+              <input type="text" id="driver1-nationality" name="driver1-nationality" placeholder="Enter driver's nationality" required ngModel #inputNationality1="ngModel" minlength="3">
+              @if(inputNationality1?.touched) {
+                <div>
+                  @if(inputNationality1?.errors?.['required']){
+                    <p class="error-message">Nationality is required!</p>
+                  }
+  
+                  @if(inputNationality1?.errors?.['minlength']){
+                    <p class="error-message">Country's name should be atleast 3 characters!</p>
+                  }
+                </div>
+              }
             </div>
           </fieldset>
 
@@ -46,19 +113,48 @@
             <legend>Driver 2</legend>
             <div class="form-group">
               <label for="driver2-name">Name</label>
-              <input type="text" id="driver2-name" name="driver2-name" placeholder="Enter driver's name" required>
+              <input type="text" id="driver2-name" name="driver2-name" placeholder="Enter driver's name" required ngModel #inputName2="ngModel">
+              @if(inputName2?.touched) {
+                <div>
+                  @if(inputName2?.errors?.['required']){
+                    <p class="error-message">Name is required!</p>
+                  }
+                </div>
+              }
             </div>
             <div class="form-group">
               <label for="driver2-age">Age</label>
-              <input type="number" id="driver2-age" name="driver2-age" placeholder="Enter driver's age" required>
+              <input type="number" id="driver2-age" name="driver2-age" placeholder="Enter driver's age" required ngModel #inputAge2="ngModel" maxlength="2">
+              @if(inputAge1?.touched) {
+                <div>
+                  @if(inputAge2?.errors?.['required']){
+                    <p class="error-message">Age is required!</p>
+                  }
+  
+                  @if(inputAge2?.errors?.['maxlength']){
+                    <p class="error-message">Age number be less than 3 characters!</p>
+                  }
+                </div>
+              }
             </div>
             <div class="form-group">
               <label for="driver2-nationality">Nationality</label>
-              <input type="text" id="driver2-nationality" name="driver2-nationality" placeholder="Enter driver's nationality" required>
+              <input type="text" id="driver2-nationality" name="driver2-nationality" placeholder="Enter driver's nationality" required ngModel #inputNationality2="ngModel" minlength="3">
+              @if(inputNationality2?.touched) {
+                <div>
+                  @if(inputNationality2?.errors?.['required']){
+                    <p class="error-message">Nationality is required!</p>
+                  }
+  
+                  @if(inputNationality2?.errors?.['minlength']){
+                    <p class="error-message">Country's name should be atleast 3 characters!</p>
+                  }
+                </div>
+              }
             </div>
           </fieldset>
 
-          <button type="submit" class="btn">Register Car</button>
+          <button type="submit" class="btn" [disabled]="form.invalid">Register Car</button>
         </form>
       </div>
     </section>

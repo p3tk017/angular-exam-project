@@ -38,6 +38,13 @@
     border: 1px solid #f39c12;
     outline: none;
   }
+
+  .error-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #f39c12;
+  }
   
   .form-group {
     display: flex;
