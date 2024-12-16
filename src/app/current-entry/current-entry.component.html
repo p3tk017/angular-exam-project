@@ -1,40 +1,45 @@
 <main>
-    <section class="car-detail-section">
-      <div class="container">
-        <h1>Car #{{car.number}} Details</h1>
-        <div class="car-detail-content">
-          <!-- Car Image -->
-          <div class="car-image">
-            <img src="{{car.imageUrl}}" alt="Car #{{car.number}} Photo">
-          </div>
-
-          <!-- Car Info -->
-          <div class="car-info">
-            <h2>Car Information</h2>
-            <p><strong>Manufacturer:</strong> {{car.manufacturer}}</p>
-            <p><strong>Model:</strong> {{car.model}}</p>
-            <p><strong>Car Number:</strong> #{{car.number}}</p>
-          </div>
+  <section class="car-detail-section">
+    <div class="container">
+      <h1>Car #{{car.number}} Details</h1>
+      <div class="car-detail-content">
+        <!-- Car Image -->
+        <div class="car-image">
+          <img src="{{car.imageUrl}}" alt="Car #{{car.number}} Photo">
         </div>
 
-        <!-- Drivers Info -->
-        <div class="drivers-info">
-            <h2>Drivers</h2>
-            <div class="driver-card-container">
-              <div class="driver-card">
-                <h3>Driver 1</h3>
-                <p><strong>Name:</strong> {{car.driver1.name}}</p>
-                <p><strong>Age:</strong> {{car.driver1.age}}</p>
-                <p><strong>Nationality:</strong> {{car.driver1.nationality}}</p>
-              </div>
-              <div class="driver-card">
-                <h3>Driver 2</h3>
-                <p><strong>Name:</strong> {{car.driver2.name}}</p>
-                <p><strong>Age:</strong> {{car.driver2.age}}</p>
-                <p><strong>Nationality:</strong> {{car.driver2.nationality}}</p>
-              </div>
+        <!-- Car Info -->
+        <div class="car-info">
+          <h2>Car Information</h2>
+          <p><strong>Manufacturer:</strong> {{car.manufacturer}}</p>
+          <p><strong>Model:</strong> {{car.model}}</p>
+          <p><strong>Car Number:</strong> #{{car.number}}</p>
+        </div>
+      </div>
+
+      <div class="entry-action-buttons">
+        <button class="btn edit-btn">Edit Entry</button>
+        <button class="btn delete-btn">Delete Entry</button>
+      </div>
+
+      <!-- Drivers Info -->
+      <div class="drivers-info">
+          <h2>Drivers</h2>
+          <div class="driver-card-container">
+            <div class="driver-card">
+              <h3>Driver 1</h3>
+              <p><strong>Name:</strong> {{car.driver1.name}}</p>
+              <p><strong>Age:</strong> {{car.driver1.age}}</p>
+              <p><strong>Nationality:</strong> {{car.driver1.nationality}}</p>
+            </div>
+            <div class="driver-card">
+              <h3>Driver 2</h3>
+              <p><strong>Name:</strong> {{car.driver2.name}}</p>
+              <p><strong>Age:</strong> {{car.driver2.age}}</p>
+              <p><strong>Nationality:</strong> {{car.driver2.nationality}}</p>
             </div>
           </div>
-      </div>
-    </section>
+        </div>
+    </div>
+  </section>
 </main>

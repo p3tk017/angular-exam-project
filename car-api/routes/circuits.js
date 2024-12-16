@@ -1,6 +1,7 @@
 const express = require('express');
 const Circuit = require('../models/Circuit');
 const router = express.Router();
+const { verifyToken} = require('../middleware/auth')
 
 router.get('/', async (req, res) => {
   try {
@@ -40,7 +41,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id',verifyToken, async (req, res) => {
   try {
     const { imageUrl, name, location, length, raceDate } = req.body;
 

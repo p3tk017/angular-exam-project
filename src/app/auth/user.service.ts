@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { UserForAuth } from '../types/users';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, take, tap } from 'rxjs';
+import {environment} from '../../environment/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private user$$ = new BehaviorSubject<UserForAuth | null>(null);
+  private user$ = this.user$$.asObservable();
+
   USER_KEY = "[user]"
   user: UserForAuth | null = null;
 
@@ -12,28 +18,33 @@ export class UserService {
     return !!this.user;
   }
 
-  constructor() { 
-    try {
-      const lsUser = localStorage.getItem(this.USER_KEY) || "";
-      this.user = JSON.parse(lsUser);
-    } catch (error) {
-      this.user = null;
-    }
+  constructor(private http: HttpClient) { 
+    this.user$.subscribe((user) => {
+      this.user = user
+    })
   }
 
-  login() {
-    this.user = {
-      name: "Gosho",
-      email: "test@gmail.com",
-      password: "123123",
-      id: "asdasdasd",
-    }
+  login(email: string, password: string) {
+    return this.http
+      .post<UserForAuth>(`${environment.apiUrl}/auth/login` , {email, password}, {withCredentials: true})
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+  register(name: string, email: string, password: string, rePassword: string) {
+    return this.http
+      .post<UserForAuth>(`${environment.apiUrl}/auth/register` , {name, email, password, rePassword}, {withCredentials: true})
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  getProfile() {
+      return this.http
+        .get<UserForAuth>(`${environment.apiUrl}/auth/profile`, {withCredentials: true})
+        .pipe(tap((user) => this.user$$.next(user)))
   }
 
   logout() {
-    this.user = null;
-    localStorage.removeItem(this.USER_KEY);
+    return this.http
+      .post(`${environment.apiUrl}/auth/logout`, {})
+      .pipe(tap((user) => this.user$$.next(null)));
   }
 }

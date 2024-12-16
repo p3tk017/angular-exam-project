@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, MinLengthValidator, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { EmailValidator } from '../../utils/email.validator';
 import { DOMAINS } from '../../constants';
 import { matchPasswordsValidator } from '../../utils/match-passwords';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -26,12 +27,24 @@ export class RegisterComponent {
   )
   })
 
+  constructor(private userService: UserService, private router: Router) {}
+
   register() {
     if(this.form.invalid) {
       return;
     }
 
-    console.log(this.form.value);
+    const {
+      name,
+      email,
+      passGroup: {password, rePassword} = {}, 
+    } = this.form.value;
+    
+    this.userService.register(name!, email!, password!, rePassword!)
+    .subscribe(() => {
+
+      this.router.navigate([""])
+    }) 
   }
 
   get passGroup() {
