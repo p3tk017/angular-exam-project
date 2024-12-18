@@ -22,4 +22,5 @@ export class CurrentEntryComponent implements OnInit {
       this.car = car; 
     });
   }
+
 }

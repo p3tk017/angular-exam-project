@@ -27,16 +27,10 @@ router.get('/:id', async (req, res) => {
 // Add a car
 router.post('/', verifyToken, async (req, res) => {
   try {
-    const { number, manufacturer, model, driver1, driver2 } = req.body;
+    const userId = req.user.id;
+    const carData = { ...req.body, owner: userId };
 
-    const car = new Car({
-      number,
-      manufacturer,
-      model,
-      driver1,
-      driver2,
-      owner: req.user.id,
-    });
+    const car = new Car(carData);
 
     await car.save();
     res.status(201).json({ message: 'Car created successfully', car });

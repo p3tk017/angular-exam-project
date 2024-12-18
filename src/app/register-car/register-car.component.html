@@ -2,11 +2,11 @@
     <section class="register-section">
       <div class="container">
         <h1>Register Car</h1>
-        <form class="register-form" #form="ngForm" (ngSubmit)="registerCar(form)">
+        <form class="register-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
           <!-- Car Details -->
           <div class="form-group">
             <label for="car-number">Car Number</label>
-            <input type="number" id="car-number" name="car-number" placeholder="Enter car number" required ngModel #inputCarNumber="ngModel" maxlength="2">
+            <input type="number" id="car-number" name="number" placeholder="Enter car number" required [(ngModel)]="car.number" #inputCarNumber="ngModel" maxlength="2">
 
             @if(inputCarNumber?.touched) {
               <div>
@@ -23,7 +23,7 @@
 
           <div class="form-group">
             <label for="manufacturer">Manufacturer</label>
-            <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter manufacturer" required ngModel #inputManufacturer="ngModel" minlength="3">
+            <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter manufacturer" required [(ngModel)]="car.manufacturer" #inputManufacturer="ngModel" minlength="3">
 
             @if(inputManufacturer?.touched) {
               <div>
@@ -40,7 +40,7 @@
 
           <div class="form-group">
             <label for="model">Model</label>
-            <input type="text" id="model" name="model" placeholder="Enter car model" required ngModel #inputModel="ngModel">
+            <input type="text" id="model" name="model" placeholder="Enter car model" required [(ngModel)]="car.model"  #inputModel="ngModel">
             @if(inputModel?.touched) {
               <div>
                 @if(inputModel?.errors?.['required']){
@@ -52,7 +52,7 @@
 
           <div class="form-group">
             <label for="car-photo-url">Car Photo URL</label>
-            <input type="url" id="car-photo-url" name="car-photo-url" placeholder="Paste car photo URL" required ngModel #inputImageUrl="ngModel">
+            <input type="url" id="car-photo-url" name="imageUrl" placeholder="Paste car photo URL" required [(ngModel)]="car.imageUrl"  #inputImageUrl="ngModel">
             @if(inputImageUrl?.touched) {
               <div>
                 @if(inputImageUrl?.errors?.['required']){
@@ -67,7 +67,7 @@
             <legend>Driver 1</legend>
             <div class="form-group">
               <label for="driver1-name">Name</label>
-              <input type="text" id="driver1-name" name="driver1-name" placeholder="Enter driver's name" required ngModel #inputName1="ngModel">
+              <input type="text" id="driver1-name" name="name" placeholder="Enter driver's name" required [(ngModel)]="car.driver1.name"  #inputName1="ngModel">
               @if(inputName1?.touched) {
                 <div>
                   @if(inputName1?.errors?.['required']){
@@ -78,7 +78,7 @@
             </div>
             <div class="form-group">
               <label for="driver1-age">Age</label>
-              <input type="number" id="driver1-age" name="driver1-age" placeholder="Enter driver's age" required ngModel #inputAge1="ngModel" maxlength="2">
+              <input type="number" id="driver1-age" name="age" placeholder="Enter driver's age" required [(ngModel)]="car.driver1.age"  #inputAge1="ngModel" maxlength="2">
               @if(inputAge1?.touched) {
                 <div>
                   @if(inputAge1?.errors?.['required']){
@@ -93,7 +93,7 @@
             </div>
             <div class="form-group">
               <label for="driver1-nationality">Nationality</label>
-              <input type="text" id="driver1-nationality" name="driver1-nationality" placeholder="Enter driver's nationality" required ngModel #inputNationality1="ngModel" minlength="3">
+              <input type="text" id="driver1-nationality" name="nationality" placeholder="Enter driver's nationality" required [(ngModel)]="car.driver1.nationality"  #inputNationality1="ngModel" minlength="3">
               @if(inputNationality1?.touched) {
                 <div>
                   @if(inputNationality1?.errors?.['required']){
@@ -113,7 +113,7 @@
             <legend>Driver 2</legend>
             <div class="form-group">
               <label for="driver2-name">Name</label>
-              <input type="text" id="driver2-name" name="driver2-name" placeholder="Enter driver's name" required ngModel #inputName2="ngModel">
+              <input type="text" id="driver2-name" name="name" placeholder="Enter driver's name" required [(ngModel)]="car.driver2.name"  #inputName2="ngModel">
               @if(inputName2?.touched) {
                 <div>
                   @if(inputName2?.errors?.['required']){
@@ -124,7 +124,7 @@
             </div>
             <div class="form-group">
               <label for="driver2-age">Age</label>
-              <input type="number" id="driver2-age" name="driver2-age" placeholder="Enter driver's age" required ngModel #inputAge2="ngModel" maxlength="2">
+              <input type="number" id="driver2-age" name="age" placeholder="Enter driver's age" required [(ngModel)]="car.driver2.age"  #inputAge2="ngModel" maxlength="2">
               @if(inputAge1?.touched) {
                 <div>
                   @if(inputAge2?.errors?.['required']){
@@ -139,7 +139,7 @@
             </div>
             <div class="form-group">
               <label for="driver2-nationality">Nationality</label>
-              <input type="text" id="driver2-nationality" name="driver2-nationality" placeholder="Enter driver's nationality" required ngModel #inputNationality2="ngModel" minlength="3">
+              <input type="text" id="driver2-nationality" name="nationality" placeholder="Enter driver's nationality" required [(ngModel)]="car.driver2.nationality"  #inputNationality2="ngModel" minlength="3">
               @if(inputNationality2?.touched) {
                 <div>
                   @if(inputNationality2?.errors?.['required']){

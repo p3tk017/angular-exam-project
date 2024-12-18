@@ -24,6 +24,7 @@ export class UserService {
     })
   }
 
+
   login(email: string, password: string) {
     return this.http
       .post<UserForAuth>(`${environment.apiUrl}/auth/login` , {email, password}, {withCredentials: true})

@@ -19,7 +19,7 @@ export const routes: Routes = [
         {path: "", component: ScheduleComponent},
         {path: ":circuitId", component: CurrentCircuitComponent, canActivate: [AuthGuard]}
     ]},
-    {path: "registerCar", component: RegisterCarComponent},
+    {path: "registerCar", component: RegisterCarComponent, canActivate: [AuthGuard]},
     {path: "entries", children: [
         {path: "", component: EntryListComponent},
         {path: ":carId", component: CurrentEntryComponent, canActivate: [AuthGuard]}

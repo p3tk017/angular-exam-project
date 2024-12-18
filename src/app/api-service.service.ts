@@ -21,6 +21,13 @@ export class ApiServiceService {
     return this.http.get<Car>(`${apiUrl}/cars/${id}`);
   }
 
+  createEntry(car: Object) {
+    const { apiUrl } = environment;
+    return this.http.post<Car>(`${apiUrl}/cars`, car, { withCredentials: true }).subscribe((response) => {
+      console.log("Car saved", response);
+    });
+  }
+
   getCircuits() {
     const { apiUrl } = environment;
     return this.http.get<Circuit[]>(`${apiUrl}/circuits`);
