@@ -14,7 +14,7 @@ export class UserService {
   USER_KEY = "[user]"
   user: UserForAuth | null = null;
 
-  get isLogget(): boolean {
+  get isLogget(): boolean {    
     return !!this.user;
   }
 
@@ -44,7 +44,7 @@ export class UserService {
 
   logout() {
     return this.http
-      .post(`${environment.apiUrl}/auth/logout`, {})
+      .get(`${environment.apiUrl}/auth/logout`, {withCredentials: true})
       .pipe(tap((user) => this.user$$.next(null)));
   }
 }

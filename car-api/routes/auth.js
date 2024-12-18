@@ -11,6 +11,16 @@ router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
     const user = new User({ name, email, password });
     await user.save();
+
+    const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict',
+      maxAge: 3600000,
+    });
+
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -37,7 +47,7 @@ router.post('/login', async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: 'Strict',
       maxAge: 3600000,
     });
 
@@ -47,8 +57,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Logout (optional since JWTs are stateless)
-router.post('/logout', (req, res) => {
+// Logout
+router.get('/logout', verifyToken, (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', 
+    sameSite: 'Strict',
+  });
+
   res.status(200).json({ message: 'User logged out successfully' });
 });
 
@@ -67,7 +83,7 @@ router.get('/profile', verifyToken, async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const users = await User.find().select('-password'); // Exclude passwords
+    const users = await User.find().select('-password'); 
     res.json(users);
   } catch (error) {
     console.error(error);
@@ -78,7 +94,7 @@ router.get('/', async (req, res) => {
 // Get a single user by ID
 router.get('/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).select('-password'); // Exclude password
+    const user = await User.findById(req.params.id).select('-password'); 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -88,15 +104,5 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-
-// router.get('/profile', (req, res) => {
-//   if (!req.cookies.token) {
-//     return res.status(401).json({ message: 'Not authenticated' });
-//   }
-//   // Token is valid, return user info
-//   const user = decodeToken(req.cookies.token); // Decode the JWT or validate session
-//   res.json(user);
-// });
 
 module.exports = router;

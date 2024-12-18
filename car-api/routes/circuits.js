@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id',verifyToken, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const { imageUrl, name, location, length, raceDate } = req.body;
 
