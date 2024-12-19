@@ -9,6 +9,7 @@ import { EntryListComponent } from './entry-list/entry-list.component';
 import { CurrentCircuitComponent } from './current-circuit/current-circuit.component';
 import { CurrentEntryComponent } from './current-entry/current-entry.component';
 import { AuthGuard } from './guards/auth.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
     {path: "", component: MainComponent},
@@ -23,5 +24,6 @@ export const routes: Routes = [
     {path: "entries", children: [
         {path: "", component: EntryListComponent},
         {path: ":carId", component: CurrentEntryComponent, canActivate: [AuthGuard]}
-    ]}
+    ]},
+    {path: "**", component: PageNotFoundComponent}
 ];
