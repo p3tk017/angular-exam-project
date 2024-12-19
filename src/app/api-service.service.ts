@@ -35,6 +35,13 @@ export class ApiServiceService {
     })
   }
 
+  editEntry(id: string, updates: Object) {
+    const { apiUrl } = environment;
+    return this.http.put(`${apiUrl}/cars/${id}`, updates, {withCredentials: true}).subscribe(() => {
+      console.log("Car updated");
+    });
+  }
+
   getCircuits() {
     const { apiUrl } = environment;
     return this.http.get<Circuit[]>(`${apiUrl}/circuits`);

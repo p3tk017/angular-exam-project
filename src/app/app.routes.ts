@@ -10,6 +10,8 @@ import { CurrentCircuitComponent } from './current-circuit/current-circuit.compo
 import { CurrentEntryComponent } from './current-entry/current-entry.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditEntryComponent } from './edit-entry/edit-entry.component';
+import { OwnerGuard } from './guards/owner.guard';
 
 export const routes: Routes = [
     {path: "", component: MainComponent},
@@ -23,7 +25,12 @@ export const routes: Routes = [
     {path: "registerCar", component: RegisterCarComponent, canActivate: [AuthGuard]},
     {path: "entries", children: [
         {path: "", component: EntryListComponent},
-        {path: ":carId", component: CurrentEntryComponent, canActivate: [AuthGuard]}
+        {path: ":carId", children: [
+            {path: "", component: CurrentEntryComponent, canActivate: [AuthGuard]},
+            {path: "edit",component: EditEntryComponent, canActivate: [OwnerGuard]}
+        ]}
+        // {path: ":carId", component: CurrentEntryComponent, canActivate: [AuthGuard]},
+        // {path: ":carId/edit",component: EditEntryComponent, canActivate: [OwnerGuard]}
     ]},
     {path: "**", component: PageNotFoundComponent}
 ];

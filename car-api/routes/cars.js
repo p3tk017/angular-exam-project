@@ -42,19 +42,27 @@ router.post('/', verifyToken, async (req, res) => {
 // Update a car
 router.put('/:id', verifyToken, async (req, res) => {
   try {
-    const { number, manufacturer, model, driver1, driver2 } = req.body;
+    const { id } = req.params; // Car ID from the route
+    const userId = req.user.id; // Authenticated user ID (from middleware)
+    const updates = req.body; // Updated data from the request body
 
-    const car = await Car.findOneAndUpdate(
-      { _id: req.params.id, owner: req.user.id }, // Ensure only owner can update
-      { number, manufacturer, model, driver1, driver2 },
-      { new: true }
-    );
+    // Find the car and check ownership
+    const car = await Car.findById(id);
+    if (!car) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
 
-    if (!car) return res.status(404).json({ message: 'Car not found or unauthorized' });
+    if (car.owner.toString() !== userId) {
+      return res.status(403).json({ message: 'You are not authorized to edit this car' });
+    }
 
-    res.status(200).json({ message: 'Car updated successfully', car });
+    // Update car
+    const updatedCar = await Car.findByIdAndUpdate(id, updates, { new: true });
+
+    res.status(200).json(updatedCar);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

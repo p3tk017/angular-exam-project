@@ -16,5 +16,5 @@ export interface Car {
         age: number;
         nationality: string;
     };
-    owner: string;
+    owner: {_id: string};
 }

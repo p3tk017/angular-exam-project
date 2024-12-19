@@ -19,7 +19,7 @@
 
       @if(isOwner) {
       <div class="entry-action-buttons">
-        <button class="btn edit-btn">Edit Entry</button>
+        <button class="btn edit-btn" [routerLink]="['edit']">Edit Entry</button>
         <button class="btn delete-btn" (click)="deleteCar()">Delete Entry</button>
       </div>
       }

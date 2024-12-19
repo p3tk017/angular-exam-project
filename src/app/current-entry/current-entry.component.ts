@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { Car } from '../types/cars';
 import { UserService } from '../auth/user.service';
@@ -7,7 +7,7 @@ import { UserService } from '../auth/user.service';
 @Component({
   selector: 'app-current-entry',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './current-entry.component.html',
   styleUrl: './current-entry.component.css'
 })
@@ -37,7 +37,7 @@ export class CurrentEntryComponent implements OnInit {
   }
     
   get isOwner(): boolean {
-    return this.carData?.owner?._id === this.userId;
+    return this.carData?.owner?._id == this.userId;
   }
 
   deleteCar() {
