@@ -9,7 +9,7 @@ import {environment} from '../../environment/environment'
 })
 export class UserService {
   private user$$ = new BehaviorSubject<UserForAuth | null>(null);
-  private user$ = this.user$$.asObservable();
+  user$ = this.user$$.asObservable();
 
   USER_KEY = "[user]"
   user: UserForAuth | null = null;
@@ -24,6 +24,9 @@ export class UserService {
     })
   }
 
+  getUserId(): string {
+      return this.user$$.value?._id || "";
+  }
 
   login(email: string, password: string) {
     return this.http
