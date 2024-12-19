@@ -7,10 +7,7 @@ import { CurrentEntryComponent } from "../current-entry/current-entry.component"
 })
 
 export class OwnerGuard implements CanActivate {
-
-    constructor(private entryComp: CurrentEntryComponent, private router: Router) {
-
-    }
+    constructor(private entryComp: CurrentEntryComponent, private router: Router) {}
 
     canActivate(): boolean {
         if (this.entryComp.isOwner) {

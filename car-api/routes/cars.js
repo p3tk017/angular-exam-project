@@ -61,13 +61,16 @@ router.put('/:id', verifyToken, async (req, res) => {
 // Delete a car
 router.delete('/:id', verifyToken, async (req, res) => {
   try {
-    const car = await Car.findOneAndDelete({ _id: req.params.id, owner: req.user.id });
+    const carId = req.params.id;
+    const deletedCar = await Car.findByIdAndDelete(carId);
 
-    if (!car) return res.status(404).json({ message: 'Car not found or unauthorized' });
+    if (!deletedCar) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
 
     res.status(200).json({ message: 'Car deleted successfully' });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ message: 'Error deleting car', error });
   }
 });
 

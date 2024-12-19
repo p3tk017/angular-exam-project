@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { Car } from '../types/cars';
 import { UserService } from '../auth/user.service';
@@ -16,7 +16,7 @@ export class CurrentEntryComponent implements OnInit {
   carData: any = null; 
   userId: string = ''; 
 
-  constructor(private route: ActivatedRoute, private apiService: ApiServiceService, private userService: UserService) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiServiceService, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     const id  = this.route.snapshot.params["carId"]; 
@@ -37,8 +37,15 @@ export class CurrentEntryComponent implements OnInit {
   }
     
   get isOwner(): boolean {
-    console.log('Car owner:', this.car?.owner);
-    console.log('User ID:', this.userId);
     return this.carData?.owner?._id === this.userId;
+  }
+
+  deleteCar() {
+    if (this.isOwner) {
+    this.apiService.deleteEntry(this.carData._id);
+    this.router.navigate(["/entries"])
+    } else {
+      console.error("Not owner!!")
+    }
   }
 }
