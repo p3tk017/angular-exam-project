@@ -1,27 +1,42 @@
-# EurotrackChampionship
+Motorsport Race Event Entry List App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+This project is a web application for managing motorsport race events. It allows users to register, log in, cars, and drivers. The app also features a catalog of all registered cars and circuits, as well as detailed information pages for individual tracks and cars.
 
-## Development server
+Tech Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Frontend:
+Framework- Angular
+Styling- CSS/SCSS
 
-## Code scaffolding
+Backend:
+Framework- Express.js
+Database- MongoDB with Mongoose
+API- REST API for communication between the frontend and backend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Backend Setup:
 
-## Build
+Clone the repository.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Navigate to the backend directory:
+"cd backend"
 
-## Running unit tests
+Install dependencies:
+"npm install"
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Set up the environment variables in a .env file:
+"PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret"
 
-## Running end-to-end tests
+Start the server:
+"npm start"
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Frontend Setup:
 
-## Further help
+Install dependencies:
+"npm install"
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Start the development server:
+"ng serve"
+
+The frontend will run on http://localhost:4200 by default.
